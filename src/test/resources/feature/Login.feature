@@ -1,6 +1,11 @@
-Feature: Login Functionality
+Feature: User Login
+  @login
 
-  Scenario: Login Successful
-    Given  I am in the login page of the Para Application
-    When  I enter valid credentials
-    Then  I should be taken to the Overview page
+  @login_positive
+  Scenario Outline: User Login Successfully
+    Given The user is on the home page of the Para Bank Application
+    When  The user enters valid "<email>" and "<password>"
+    Then  User should be taken to the Overview page
+  Examples:
+    | email     | password |
+    | tautester | password |

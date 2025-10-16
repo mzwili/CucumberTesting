@@ -34,13 +34,11 @@ public class RegistrationDefinition extends BaseSteps {
         registrationPage.setUserNameInput(username);
         registrationPage.setPasswordInput(password);
         registrationPage.setConfirmInput(confirm);
-
-
+        this.accountServicesPage = registrationPage.clickRegisterBtn();
     }
 
     @Then("User should be taken to the Account Services page")
     public void userShouldBeTakenToTheAccountServicesPage() {
-        this.accountServicesPage = registrationPage.clickRegisterBtn();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(accountServicesPage.getPageheading()));// Example locator

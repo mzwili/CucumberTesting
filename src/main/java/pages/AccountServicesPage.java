@@ -23,5 +23,9 @@ public class AccountServicesPage {
         return driver.findElement(message).getText();
     }
 
+    public void clickLogOutBtn(){
+        driver.findElement(logoutButton).click();
+    }
+
 
 }

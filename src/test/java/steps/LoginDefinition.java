@@ -17,11 +17,19 @@ public class LoginDefinition extends BaseSteps {
     private UserAccountPage userAccountPage;
 
 
-    @When("The user enters valid {string} and {string}")
+    @When("The user enters invalid {string} and {string}")
     public void theUserEntersValidAnd(String username, String password) {
         loginPage = new LoginPage(driver);
         loginPage.setUsername(username);
         loginPage.setPasswordInput(password);
+        userAccountPage = loginPage.loginClick();
+    }
+
+    @When("The user enters valid credentials")
+    public void theUserEntersCredentials() {
+        loginPage = new LoginPage(driver);
+        loginPage.setUsername(getUserName());
+        loginPage.setPasswordInput(getPassword());
         userAccountPage = loginPage.loginClick();
     }
 
@@ -35,4 +43,9 @@ public class LoginDefinition extends BaseSteps {
     }
 
 
+    @Then("User should not login successfully")
+    public void userShouldNotLoginSuccessfully() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
 }

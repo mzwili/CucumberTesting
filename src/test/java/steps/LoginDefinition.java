@@ -1,13 +1,8 @@
 package steps;
 
-import io.cucumber.java.PendingException;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.After;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import pages.UserAccountPage;
 
@@ -37,21 +32,21 @@ public class LoginDefinition extends BaseSteps {
     public void iShouldBeTakenToTheOverviewPage() throws InterruptedException {
 
         Thread.sleep(3000);
-        Assert.assertEquals(userAccountPage.getPageHeading(),"Accounts Overview");
+        Assert.assertEquals("Accounts Overview", userAccountPage.getPageHeading());
         userAccountPage.clickOnLogoutButton();
     }
 
 
     @Then("User should not login successfully")
     public void userShouldNotLoginSuccessfully() {
-        Assert.assertEquals(loginPage.titleMessage(),"Error!");
-        Assert.assertEquals(loginPage.errorMessage(),"Please enter a username and password.");
+        Assert.assertEquals("Error!", loginPage.titleMessage());
 
-    }
+        if(!loginPage.getUserPassword().isEmpty() && !loginPage.getUserName().isEmpty()){
+            Assert.assertEquals("The username and password could not be verified.", loginPage.errorMessage());
+        }else{
+            Assert.assertEquals("Please enter a username and password.", loginPage.errorMessage());
+        }
 
-    @Then("User login unsuccessful")
-    public void userLoginUnsuccessfull() {
-        Assert.assertEquals(loginPage.titleMessage(),"Error!");
-        Assert.assertEquals(loginPage.errorMessage(),"An internal error has occurred and has been logged.");
+
     }
 }

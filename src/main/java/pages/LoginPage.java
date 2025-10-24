@@ -11,16 +11,20 @@ public class LoginPage {
     private By loginBtn = By.xpath("//input[@class='button']");
     private By titleMessage = By.tagName("h1");
     private By message = By.className("error");
+    private String userName;
+    private String passWord;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
     public void setUsername(String username) {
+        userName = username;
         driver.findElement(usernameInput).sendKeys(username);;
     }
 
     public void setPasswordInput(String password) {
+        passWord = password;
         driver.findElement(passwordInput).sendKeys(password);
     }
 
@@ -35,5 +39,13 @@ public class LoginPage {
 
     public String errorMessage(){
         return driver.findElement(message).getText();
+    }
+
+    public String getUserName(){
+        return userName;
+    }
+
+    public String getUserPassword(){
+        return passWord;
     }
 }

@@ -1,6 +1,5 @@
 package steps;
 
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import pages.AccountServicesPage;
 import pages.RegistrationPage;

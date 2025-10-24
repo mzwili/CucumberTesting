@@ -1,7 +1,5 @@
+@register
 Feature: User Registration
-
-  @Register
-
 
   @register_positive
   Scenario Outline: User Register Successfully

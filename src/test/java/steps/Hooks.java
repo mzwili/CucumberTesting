@@ -18,7 +18,7 @@ public class Hooks {
     @After
     public void tearDown() {
         if (driver != null) {
-            driver.manage().timeouts();
+            driver.close();
         }
     }
 }

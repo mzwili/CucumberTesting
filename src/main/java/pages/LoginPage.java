@@ -9,6 +9,8 @@ public class LoginPage {
     private By usernameInput = By.xpath("//input[@name='username']");
     private By passwordInput = By.xpath("//input[@name='password']");
     private By loginBtn = By.xpath("//input[@class='button']");
+    private By titleMessage = By.tagName("h1");
+    private By message = By.className("error");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -25,5 +27,13 @@ public class LoginPage {
     public UserAccountPage loginClick (){
         driver.findElement(loginBtn).submit();
         return new UserAccountPage(driver);
+    }
+
+    public String titleMessage(){
+        return driver.findElement(titleMessage).getText();
+    }
+
+    public String errorMessage(){
+        return driver.findElement(message).getText();
     }
 }

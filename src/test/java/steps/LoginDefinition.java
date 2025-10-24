@@ -39,13 +39,19 @@ public class LoginDefinition extends BaseSteps {
         Thread.sleep(3000);
         Assert.assertEquals(userAccountPage.getPageHeading(),"Accounts Overview");
         userAccountPage.clickOnLogoutButton();
-        driver.close();
     }
 
 
     @Then("User should not login successfully")
     public void userShouldNotLoginSuccessfully() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Assert.assertEquals(loginPage.titleMessage(),"Error!");
+        Assert.assertEquals(loginPage.errorMessage(),"Please enter a username and password.");
+
+    }
+
+    @Then("User login unsuccessful")
+    public void userLoginUnsuccessfull() {
+        Assert.assertEquals(loginPage.titleMessage(),"Error!");
+        Assert.assertEquals(loginPage.errorMessage(),"An internal error has occurred and has been logged.");
     }
 }
